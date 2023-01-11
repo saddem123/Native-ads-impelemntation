@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name"> TESTED4YOU</string>
+    <string name="facebook_app_id">655974065286619</string>
+    <string name="fb_login_protocol_scheme">fb655974065286619</string>
+    <string name="download">Download</string>
+    <string name="ad">Ad</string>
+    <string name="todo">TODO</string>
+    <string name="install">INSTALL</string>
+    <string name="play">play</string>
+    <string name="mute">mute</string>
+    <string name="customcontrols_view_video_status">Video Status:</string>
+</resources>
+
