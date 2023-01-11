@@ -31,6 +31,12 @@ class ListTileNativeAdFactory(val context: Context) : GoogleMobileAdsPlugin.Nati
             val attributionViewLarge =
                 findViewById<TextView>(R.id.tv_list_tile_native_ad_attribution_large)
 
+            val mediaView = findViewById<MediaView>(R.id.ad_media)
+
+            if (mediaView != null){
+                mediaView.mediaContent =  nativeAd.mediaContent
+            }
+
             val iconView = findViewById<ImageView>(R.id.iv_list_tile_native_ad_icon)
             val icon = nativeAd.icon
             if (icon != null) {

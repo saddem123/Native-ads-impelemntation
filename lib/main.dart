@@ -89,7 +89,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   NativeAd generateNewAd(int index) {
     return NativeAd(
-      adUnitId: 'ca-app-pub-3940256099942544/2247696110',
+      adUnitId: 'ca-app-pub-3940256099942544/1044960115',
       factoryId: 'listTile',
       request: const AdRequest(),
       listener: NativeAdListener(
@@ -198,7 +198,7 @@ class _AdWidgetContainerState extends State<AdWidgetContainer> {
   Widget build(BuildContext context) {
     print("build AdWidgetContainer ${widget.index}");
     return SizedBox(
-        height: 300,
+        height: 400,
         width: MediaQuery.of(context).size.width,
         child:  AdWidget(key: Key(widget.ad.hashCode.toString()),ad: widget.ad)
     );
@@ -393,7 +393,6 @@ class _VideoWidgetState extends State<VideoWidget> {
     return VisibilityDetector(
       key: Key('visibility-player-${widget.videoUrl}'),
       onVisibilityChanged: (visibleForTesting){
-        print("visibility ${visibleForTesting.visibleFraction}");
         _visibilityFraction = _visibilityFraction;
         if(visibleForTesting.visibleFraction > 0.4){
           play();
