@@ -1,7 +1,6 @@
 // TODO: Import google_mobile_ads
 import google_mobile_ads
 import UIKit
-import Cosmos
 
 // TODO: Implement ListTileNativeAdFactory
 class ListTileNativeAdFactory : FLTNativeAdFactory {
@@ -24,21 +23,16 @@ class ListTileNativeAdFactory : FLTNativeAdFactory {
         (nativeAdView.iconView as! UIImageView).layer.masksToBounds = true
         (nativeAdView.iconView as! UIImageView).image = nativeAd.icon?.image
         nativeAdView.iconView!.isHidden = nativeAd.icon == nil
-        //add rating 
+        //add rating
         //(nativeAdView.starRatingView as! UIImageView).image  = nativeAd.starRating
         nativeAdView.callToActionView?.isUserInteractionEnabled = false
         
-        let ratingView = nativeAdView.starRatingView as! CosmosView
         let storeLabel = nativeAdView.storeView as! UILabel
         let priceLabel = nativeAdView.priceView as! UILabel
         //ratingView.rating = 3
         //storeLabel.text = "Play store"
         //priceLabel.text = "3000$"
-        if nativeAd.starRating != nil {
-            ratingView.rating = nativeAd.starRating as! Double
-        } else {
-            ratingView.isHidden = true
-        }
+       
         
         if nativeAd.price != nil {
             priceLabel.text = nativeAd.price

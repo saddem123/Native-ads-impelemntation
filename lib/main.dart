@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:better_player/better_player.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -13,7 +15,9 @@ void main() async {
   MobileAds.instance.updateRequestConfiguration(
       RequestConfiguration(testDeviceIds: [
         '883d4442-b7db-4b6e-869c-e157c5fd1bbb',
-        '86f80ed3-107e-4c0b-8b2b-27dec65cadd8']));
+        '86f80ed3-107e-4c0b-8b2b-27dec65cadd8',
+        'F160D736-A6B6-4329-9CBA-ABBA1D8235EE'
+      ]));
   await setupLocator();
   runApp(const MyApp());
 }
@@ -91,7 +95,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   NativeAd generateNewAd(int index) {
     return NativeAd(
-      adUnitId: 'ca-app-pub-3940256099942544/1044960115',
+      adUnitId: Platform.isAndroid ?
+          'ca-app-pub-3940256099942544/1044960115':
+          'ca-app-pub-3940256099942544/2521693316',
       factoryId: 'listTile',
       request: const AdRequest(),
       nativeAdOptions: NativeAdOptions(
