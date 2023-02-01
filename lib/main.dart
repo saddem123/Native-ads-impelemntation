@@ -11,7 +11,9 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   MobileAds.instance.initialize();
   MobileAds.instance.updateRequestConfiguration(
-      RequestConfiguration(testDeviceIds: ['883d4442-b7db-4b6e-869c-e157c5fd1bbb']));
+      RequestConfiguration(testDeviceIds: [
+        '883d4442-b7db-4b6e-869c-e157c5fd1bbb',
+        '86f80ed3-107e-4c0b-8b2b-27dec65cadd8']));
   await setupLocator();
   runApp(const MyApp());
 }
@@ -67,7 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
 
   final List<String> _videos = const [
-    'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4',
+    /*'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4',
     "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
     "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
     "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
@@ -76,7 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
     "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4",
     "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4",
     "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/VolkswagenGTIReview.mp4",
-    "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4"
+    "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4"*/
   ];
 
 
@@ -92,6 +94,13 @@ class _MyHomePageState extends State<MyHomePage> {
       adUnitId: 'ca-app-pub-3940256099942544/1044960115',
       factoryId: 'listTile',
       request: const AdRequest(),
+      nativeAdOptions: NativeAdOptions(
+          mediaAspectRatio: MediaAspectRatio.landscape,
+          videoOptions: VideoOptions(
+            customControlsRequested: false,
+            clickToExpandRequested: false,
+            startMuted: false,
+          )),
       listener: NativeAdListener(
         onAdLoaded: (Ad ad) {
           print("ad loaded $index");
@@ -108,7 +117,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   List<NativeAd> _preloadNativeAds(){
-    return  [generateNewAd(0)..load(),generateNewAd(1)..load(),generateNewAd(2)..load(),generateNewAd(3)..load(),generateNewAd(4)..load(),generateNewAd(5)..load()];
+    return  [generateNewAd(0)..load()];
   }
 
   List<Widget> _oldList(){
@@ -143,16 +152,17 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     print("build MyHomePage");
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
         title: Text(widget.title),
       ),
       body: ListView.builder(
-        itemCount: _videos.length,
+        itemCount: 1,
         itemBuilder: (context,index) {
           return Column(
             children: [
-              VideoWidget(videoUrl: _videos[index]),
-              if(index % 2 == 0 && index > 0 &&  _loadedState[index~/2 - 1] ) AdWidgetContainer(ad: _ads[index~/2 - 1], index: index~/2 - 1)
+              /// VideoWidget(videoUrl: _videos[index]),
+              if(_loadedState[0]) AdWidgetContainer(ad: _ads[0], index:0)
             ],
           );
         },
