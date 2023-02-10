@@ -11,8 +11,7 @@ import google_mobile_ads
   ) -> Bool {
     GeneratedPluginRegistrant.register(with: self)
     GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [
-            "c5526b788a56241494fd9502f3173935",
-            "F160D736-A6B6-4329-9CBA-ABBA1D8235EE"
+            "2077ef9a63d2b398840261c8221a0c9b"
     ]
       // TODO: Register ListTileNativeAdFactory
     let listTileFactory = ListTileNativeAdFactory()
